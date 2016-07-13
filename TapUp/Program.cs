@@ -102,29 +102,25 @@ namespace TapUp
 			nNums = new int[] {-1, -1, -1, -1};
 			for (int i = 0; i < cNums.Length; i++) 
 			{
-				while (nNums[i] == -1){
-					// Pick one of the avilable indexes.
-					int index = rand.Next (indexes.Count);
-					// Get the value of the index
-					int nNumI = indexes [index];
+				// Pick one of the avilable indexes.
+				int index = rand.Next (indexes.Count);
+				// Get the value of the index
+				int nNumI = indexes [index];
 
-					if ((rand.Next (2) == 0 || cNums[i] == top) && cNums[i] > 0) {
-						nNums [nNumI] = cNums [i] - 1;
-					} else {
-						nNums [nNumI] = cNums [i] + 1;
-					}
-					
-					// Remove the index from the list of indexes.
-					if (nNums[nNumI] != -1){
-						indexes.RemoveAt (index);
-					}
+				if ((rand.Next (2) == 0 || cNums[i] == top) && cNums[i] > 0) {
+					nNums [nNumI] = cNums [i] - 1;
+				} else {
+					nNums [nNumI] = cNums [i] + 1;
 				}
+				
+				// Remove the index from the list of indexes.
+				indexes.RemoveAt (index);
 			}
 		}
 
 		private void EndGame()
 		{
-			Console.WriteLine("Game Over");
+			Console.WriteLine("\n\nGame Over");
 			System.Environment.Exit(1);
 		}
 
